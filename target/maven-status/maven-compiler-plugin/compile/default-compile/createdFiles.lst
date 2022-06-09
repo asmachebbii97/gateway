@@ -1,0 +1,5 @@
+com\apigateway\gateway\GatewayApplication.class
+com\apigateway\gateway\config\WebClientConfig.class
+com\apigateway\gateway\dto\UserDto.class
+com\apigateway\gateway\config\AuthGlobaleFilter.class
+com\apigateway\gateway\dto\UserDto$UserDtoBuilder.class

@@ -1,0 +1,72 @@
+server:
+  port: 8888
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: https://eureka-server-cz.herokuapp.com/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoint.gateway.enabled: true
+  endpoints.web.exposure.include: gateway
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: authentication-service
+          uri: lb://authentication-service
+          predicates:
+            - Path=/api/auth/**
+          filters:
+        - id: cart-service
+          uri: lb://cart-service
+          predicates:
+            - Path=/cart/**
+            - Path=/mylearning/**
+            - Path=/api/**
+        - id: course-serviceee
+          uri: lb://course-serviceee
+          predicates:
+            - Path=/course/**
+        - id: classRoom-application
+          uri: lb://classRoom-application
+          predicates:
+            - Path=/course/**
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/course/**
+        - id: joboffers-application
+          uri: lb://joboffers-application
+          predicates:
+            - Path=/JobOffers/**
+        - id: prehiring-tests-application
+          uri: lb://prehiring-tests-application
+          predicates:
+            - Path=/PrehiringTests/**
+        - id: candidate-application
+          uri: lb://candidate-application
+          predicates:
+            - Path=/CandidateApp/**
+        - id: businessauth-application
+          uri: lb://businessauth-application
+          predicates:
+            - Path=/api/auth/**

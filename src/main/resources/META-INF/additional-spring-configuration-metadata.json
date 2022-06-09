@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "spring.cloud.gateway.globalcors.cors-configurations.[/**].allowedOrigins",
+      "type": "java.lang.String",
+      "description": "Description for spring.cloud.gateway.globalcors.cors-configurations.[/**].allowedOrigins."
+    }
+
+  ] }
