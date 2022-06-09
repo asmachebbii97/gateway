@@ -7,6 +7,8 @@ eureka:
       defaultZone: https://eureka-server-cz.herokuapp.com/eureka/
   instance:
     prefer-ip-address: true
+    hostname: gateway.herokuapp.com
+    homePageUrl: https://${eureka.instance.hostName}/
 
 management:
   endpoint.gateway.enabled: true
@@ -42,16 +44,12 @@ spring:
             - Path=/cart/**
             - Path=/mylearning/**
             - Path=/api/**
-        - id: course-serviceee
-          uri: lb://course-serviceee
-          predicates:
-            - Path=/course/**
         - id: classRoom-application
           uri: lb://classRoom-application
           predicates:
             - Path=/course/**
-        - id: course-servicelocal
-          uri: lb://course-servicelocal
+        - id: course-local
+          uri: lb://course-local
           predicates:
             - Path=/course/**
         - id: joboffers-application
