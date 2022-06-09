@@ -48,8 +48,8 @@ spring:
           uri: lb://classRoom-application
           predicates:
             - Path=/course/**
-        - id: course-local
-          uri: lb://course-local
+        - id: course-service-trainer
+          uri: lb://course-service-trainer
           predicates:
             - Path=/course/**
         - id: joboffers-application
@@ -60,8 +60,8 @@ spring:
           uri: lb://prehiring-tests-application
           predicates:
             - Path=/PrehiringTests/**
-        - id: candidate-application
-          uri: lb://candidate-application
+        - id: candidateapp-application
+          uri: lb://candidateapp-application
           predicates:
             - Path=/CandidateApp/**
         - id: businessauth-application
