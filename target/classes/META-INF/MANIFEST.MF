@@ -1,9 +1,6 @@
 Manifest-Version: 1.0
-Built-By: Asma
-Build-Jdk: 14.0.1
+Build-Jdk-Spec: 14
 Implementation-Title: gateway
 Implementation-Version: 0.0.1-SNAPSHOT
-Implementation-Vendor-Id: com.api-gateway
-Implementation-URL: https://spring.io/projects/spring-boot/gateway
 Created-By: Maven Integration for Eclipse
 

@@ -15,8 +15,8 @@
 	<description> project for gateway</description>
 	<properties>
 		<java.version>11</java.version>
-		<spring-cloud.version>2021.0.1</spring-cloud.version>
-		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		<spring-cloud.version>2021.0.0</spring-cloud.version>
+		
 		<reactor-bom.version>Dysprosium-SR9</reactor-bom.version>
 	</properties>
 	<dependencies>
