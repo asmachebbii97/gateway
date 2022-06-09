@@ -68,3 +68,14 @@ spring:
           uri: lb://businessauth-application
           predicates:
             - Path=/api/auth/**
+        - id: skillcourzelo
+          uri: lb://skillcourzelo
+          predicates:
+            - Path=/api/skills/**
+            - Path=/skills/**
+        - id: quizcourzelo
+          uri: lb://quizcourzelo
+          predicates:
+            - Path=/api/Quiz/**
+            - Path=/quiz/**
+       
