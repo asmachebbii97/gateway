@@ -50,8 +50,8 @@ spring:
           uri: lb://classRoom-application
           predicates:
             - Path=/course/**
-        - id: course-service
-          uri: lb://course-service
+        - id: course-servicelocal
+          uri: lb://course-servicelocal
           predicates:
             - Path=/course/**
         - id: joboffers-application
