@@ -44,8 +44,8 @@ spring:
             - Path=/cart/**
             - Path=/mylearning/**
             - Path=/api/**
-        - id: classRoom-application
-          uri: lb://classRoom-application
+        - id: courzeloclassroom
+          uri: lb://courzeloclassroom
           predicates:
             - Path=/course/**
         - id: course-service-trainer
