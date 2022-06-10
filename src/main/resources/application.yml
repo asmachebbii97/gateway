@@ -33,50 +33,64 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: authentication-service
-          uri: lb://authentication-service
+        - id: auth-herokuu
+          uri: lb://auth-herokuu
           predicates:
             - Path=/api/auth/**
-          filters:
-        - id: cart-service
-          uri: lb://cart-service
+        - id: business-auth
+          uri: lb://business-auth
+          predicates:
+            - Path=/api/auth/**
+        - id: cart-herokuu
+          uri: lb://cart-herokuu
           predicates:
             - Path=/cart/**
             - Path=/mylearning/**
             - Path=/api/**
+          filter: 
+            - AuthGlobaleFilter
         - id: courzeloclassroom
           uri: lb://courzeloclassroom
           predicates:
             - Path=/course/**
+          filter: 
+            - AuthGlobaleFilter
         - id: course-service-trainer
           uri: lb://course-service-trainer
           predicates:
             - Path=/course/**
+          filter: 
+            - AuthGlobaleFilter
         - id: joboffers-application
           uri: lb://joboffers-application
           predicates:
             - Path=/JobOffers/**
-            - Path=/Tests/**
+          filter: 
+            - AuthGlobaleFilter
         - id: prehiring-tests-application
           uri: lb://prehiring-tests-application
           predicates:
             - Path=/PrehiringTests/**
+          filter: 
+           - AuthGlobaleFilter
         - id: candidateapp-application
           uri: lb://candidateapp-application
           predicates:
             - Path=/CandidateApp/**
-        - id: businessauth-application
-          uri: lb://businessauth-application
-          predicates:
-            - Path=/api/auth/**
+          filter: 
+            - AuthGlobaleFilter
         - id: skillcourzelo
           uri: lb://skillcourzelo
           predicates:
             - Path=/api/skills/**
             - Path=/skills/**
+          filter: 
+            - AuthGlobaleFilter
         - id: quizcourzelo
           uri: lb://quizcourzelo
           predicates:
             - Path=/api/Quiz/**
             - Path=/quiz/**
+          filter: 
+           - AuthGlobaleFilter
        
