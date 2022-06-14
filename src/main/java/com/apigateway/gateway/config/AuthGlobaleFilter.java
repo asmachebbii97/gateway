@@ -57,10 +57,7 @@ public class AuthGlobaleFilter implements GlobalFilter {
         System.out.println(" and " + exchange.getRequest().getMethod().toString().equals("GET"));
          
          
-        if (getjobPath && status) {
-        	exchange.getResponse().setStatusCode(HttpStatus.OK);
-        }
-        else if(getjobPath2 && status) {
+        if (getjobPath2 && status) {
         	exchange.getResponse().setStatusCode(HttpStatus.OK);
         }
         else if (!authPathIsFound ){
