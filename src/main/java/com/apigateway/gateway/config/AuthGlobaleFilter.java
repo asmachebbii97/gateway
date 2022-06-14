@@ -49,15 +49,19 @@ public class AuthGlobaleFilter implements GlobalFilter {
         String requestPath = exchange.getRequest().getPath().toString();
         boolean header = exchange.getRequest().getHeaders().containsKey("Authorization");
         boolean authPathIsFound = requestPath.contains("/api/auth/");
-        //boolean getjobPath = requestPath.equals("/joboffers-application/JobOffers");
-        //boolean status =exchange.getRequest().getMethod().equals(HttpMethod.GET);
-        //System.out.print(requestPath);
-      
-       
-        if(!authPathIsFound) {
-        	List<String> headers = exchange.getRequest().getHeaders().get("Authorization");
-            
-            if(headers.get(0).isEmpty()) {
+        boolean getjobPath = requestPath.contains("/JobOffers");
+        boolean status =exchange.getRequest().getMethod().toString().equals("GET");
+        System.out.println(requestPath );
+        System.out.println("and"+ getjobPath);
+        System.out.println(" and " + exchange.getRequest().getMethod().toString().equals("GET"));
+         
+         
+        if (getjobPath && status) {
+        	exchange.getResponse().setStatusCode(HttpStatus.OK);
+        }
+        else if (!authPathIsFound ){
+            if(header) {
+            	List<String> headers = exchange.getRequest().getHeaders().get("Authorization");
             	String[] parts = headers.get(0).split(" ");
             	if (parts.length == 2 && "Bearer".equals(parts[0])) {
                   if (validateJwtToken(parts[1])) {
@@ -77,6 +81,9 @@ public class AuthGlobaleFilter implements GlobalFilter {
                 return exchange.getResponse().setComplete();
              }
         }
+        	
+        
+        		 
         
        return chain.filter(exchange);
     }
