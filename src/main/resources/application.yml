@@ -89,7 +89,7 @@ spring:
         - id: quizcourzelo
           uri: lb://quizcourzelo
           predicates:
-            - Path=/api/Quiz/**
+            - Path=/api/**
             - Path=/quiz/**
           filter: 
            - AuthGlobaleFilter
