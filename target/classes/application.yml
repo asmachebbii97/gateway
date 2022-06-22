@@ -71,6 +71,7 @@ spring:
           uri: lb://prehiring-tests-application
           predicates:
             - Path=/PrehiringTests/**
+            - Path=/Tests/**
           filter: 
            - AuthGlobaleFilter
         - id: candidateapp-application

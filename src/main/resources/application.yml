@@ -52,7 +52,7 @@ spring:
         - id: courzeloclassroom
           uri: lb://courzeloclassroom
           predicates:
-            - Path=/course/**
+            - Path=/api/**
           filter: 
             - AuthGlobaleFilter
         - id: course-service-trainer
@@ -71,6 +71,7 @@ spring:
           uri: lb://prehiring-tests-application
           predicates:
             - Path=/PrehiringTests/**
+            - Path=/Tests/**
           filter: 
            - AuthGlobaleFilter
         - id: candidateapp-application
