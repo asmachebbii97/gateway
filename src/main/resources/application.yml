@@ -37,8 +37,8 @@ spring:
           uri: lb://auth-herokuu
           predicates:
             - Path=/api/auth/**
-        - id: business-auth
-          uri: lb://business-auth
+        - id: business-auth-app
+          uri: lb://business-auth-app
           predicates:
             - Path=/api/auth/**
         - id: cart-herokuu
