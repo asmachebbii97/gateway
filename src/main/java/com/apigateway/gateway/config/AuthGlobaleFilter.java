@@ -1,31 +1,23 @@
 package com.apigateway.gateway.config;
 
 
-import java.io.Console;
-import java.io.IOException;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
-import org.springframework.cloud.gateway.filter.factory.AbstractNameValueGatewayFilterFactory.NameValueConfig;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ServerWebExchange;
-
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
-import io.netty.handler.codec.http.HttpMethod;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -49,6 +41,7 @@ public class AuthGlobaleFilter implements GlobalFilter {
         String requestPath = exchange.getRequest().getPath().toString();
         boolean header = exchange.getRequest().getHeaders().containsKey("Authorization");
         boolean authPathIsFound = requestPath.contains("/api/auth/");
+        boolean SocketPathIsFound = requestPath.contains("socket");
         boolean getjobPath = requestPath.equals("/JobOffers") ;
         boolean getjobPath2 = requestPath.equals("/JobOffers/state/Active") ;
         boolean status =exchange.getRequest().getMethod().toString().equals("GET");
@@ -60,7 +53,7 @@ public class AuthGlobaleFilter implements GlobalFilter {
         if (getjobPath2 && status) {
         	exchange.getResponse().setStatusCode(HttpStatus.OK);
         }
-        else if (!authPathIsFound ){
+        else if (!authPathIsFound && !SocketPathIsFound ){
             if(header) {
             	List<String> headers = exchange.getRequest().getHeaders().get("Authorization");
             	String[] parts = headers.get(0).split(" ");

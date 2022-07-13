@@ -41,6 +41,9 @@ spring:
           uri: lb://business-auth
           predicates:
             - Path=/api/auth/**
+            - Path=/websocket-backend/**
+            - Path=/socket/**
+            - Path=/**
         - id: cart-herokuu
           uri: lb://cart-herokuu
           predicates:
@@ -52,7 +55,7 @@ spring:
         - id: courzeloclassroom
           uri: lb://courzeloclassroom
           predicates:
-            - Path=/course/**
+            - Path=/api/**
           filter: 
             - AuthGlobaleFilter
         - id: course-service-trainer
