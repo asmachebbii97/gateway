@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: https://eureka-server-cz.herokuapp.com/eureka/
+      defaultZone: https://eureka-server-courzelo.herokuapp.com/eureka/
   instance:
     prefer-ip-address: true
     hostname: gateway.herokuapp.com
