@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: https://eureka-server-cz.herokuapp.com/eureka/
+      defaultZone: https://eureka-server-courzelo.herokuapp.com/eureka/
   instance:
     prefer-ip-address: true
     hostname: gateway.herokuapp.com
@@ -15,7 +15,7 @@ management:
   endpoints.web.exposure.include: gateway
 spring:
   application:
-    name: api-gatewayy
+    name: api-gatewayy2
   cloud:
     gateway:
       globalcors:
@@ -50,6 +50,12 @@ spring:
             - Path=/cart/**
             - Path=/mylearning/**
             - Path=/api/**
+          filter: 
+            - AuthGlobaleFilter
+        - id: blog-herokuu
+          uri: lb://blog-herokuu
+          predicates:
+            - Path=/post/**
           filter: 
             - AuthGlobaleFilter
         - id: courzeloclassroom

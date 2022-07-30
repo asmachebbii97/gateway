@@ -44,13 +44,17 @@ public class AuthGlobaleFilter implements GlobalFilter {
         boolean SocketPathIsFound = requestPath.contains("socket");
         boolean getjobPath = requestPath.equals("/JobOffers") ;
         boolean getjobPath2 = requestPath.equals("/JobOffers/state/Active") ;
+        boolean getPost = requestPath.contains("/post") ;
         boolean status =exchange.getRequest().getMethod().toString().equals("GET");
+        
+        boolean getCoursePath = requestPath.contains("course") ;
+        
         System.out.println(requestPath );
-        System.out.println("and"+ getjobPath);
+        System.out.println("and"+ getCoursePath);
         System.out.println(" and " + exchange.getRequest().getMethod().toString().equals("GET"));
          
          
-        if (getjobPath2 && status) {
+        if ((getjobPath2 && status) || (getCoursePath && status) || (getPost && status)) {
         	exchange.getResponse().setStatusCode(HttpStatus.OK);
         }
         else if (!authPathIsFound && !SocketPathIsFound ){
