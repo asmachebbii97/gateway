@@ -15,7 +15,7 @@ management:
   endpoints.web.exposure.include: gateway
 spring:
   application:
-    name: api-gatewayy2
+    name: api-gatewayy
   cloud:
     gateway:
       globalcors:
