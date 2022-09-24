@@ -28,7 +28,7 @@ public class AuthGlobaleFilter implements GlobalFilter {
     @Value("926D96C90030DD58429D2751AC1BDBBC")
 	private String jwtSecret;
 
-	@Value("864000000")
+	@Value("900000")
 	private int jwtExpirationMs;
 
     public AuthGlobaleFilter() {
